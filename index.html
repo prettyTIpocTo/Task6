@@ -241,11 +241,6 @@
         const propertyCheckbox = document.getElementById('property');
         const calculateButton = document.getElementById('calculate');
         const resultDiv = document.getElementById('result');
-        
-        if (quantity <= 0 || isNaN(quantity)) {
-          resultParagraph.textContent = 'Некорректное количество товара!';
-          return;
-        }
         function calculateCost() {
           const quantity = parseInt(quantityInput.value);
           let price = 0;
@@ -285,6 +280,10 @@
               optionSelect.style.display = 'none';
               propertyCheckbox.style.display = 'none';
             }
+          }
+          if (quantity <= 0 || isNaN(quantity)) {
+              resultDiv.textContent = 'Некорректное количество товара!';
+              return;
           }
           const totalCost = quantity * price;
           resultDiv.textContent = `Стоимость заказа: ${totalCost} руб.`;
